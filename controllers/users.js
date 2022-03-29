@@ -15,7 +15,23 @@ const getUser = (req, res) => {
   res.json(user)
 }
 
+const createUser = (req, res) => {
+  let user = {}
+  const newId = users[users.length -1].id + 1
+  
+  user.user_id = newId
+  user.first_name = req.body.first_name
+  user.last_name = req.body.last_name
+  user.email = req.body.email
+  
+  users.push(user)
+
+  res.json(users)
+
+}
+
 module.exports = {
   getAllUsers,
-  getUser
+  getUser,
+  createUser
 }
