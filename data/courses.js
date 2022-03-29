@@ -18,7 +18,7 @@ module.exports = [
         "student_number_end": 18
     },
     {
-        "course_id" : 1,
+        "course_id" : 2,
         "cohort_id" : 1,
         "course_number" : 11,
         "hubspot_ticket" : "hubspot ticket 2",
