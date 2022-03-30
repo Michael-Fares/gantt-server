@@ -17,7 +17,8 @@ const getUser = (req, res) => {
 
 const createUser = (req, res) => {
   let user = {}
-  const newId = users[users.length -1].id + 1
+  const newId = users[users.length -1].user_id + 1
+  
   
   user.user_id = newId
   user.first_name = req.body.first_name
