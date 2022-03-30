@@ -30,8 +30,32 @@ const createUser = (req, res) => {
 
 }
 
+const updateUser = (req, res) => {
+  const user = users.find(user => user.user_id == req.params.id)
+
+  user.first_name = req.body.first_name
+  user.last_name = req.body.last_name
+  user.email = req.body.email
+
+  res.json(user)
+}
+
+const deleteUser = (req, res) => {
+  const deletedUser = users.find(user => user.user_id == req.params.id)
+
+  if(!deletedUser) {
+    res.status(404)
+    res.send(`No user with id ${req.params.id} exists`)
+    }
+  
+  const updatedUsersArray = users.filter(user => user.user_id !== deletedUser.user_id)
+  res.json({message: `user with id ${req.params.id} deleted`, updatedUserList: updatedUsersArray})
+}
+
 module.exports = {
   getAllUsers,
   getUser,
-  createUser
+  createUser,
+  updateUser,
+  deleteUser
 }
