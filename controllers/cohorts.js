@@ -29,9 +29,8 @@ const createCohort = (req, res) => {
 
 // not working - why ?
 const updateCohort = (req, res) => {
-    const cohort = cohorts.find(cohort.cohort_id == req.params.id)
-    console.log(cohort)
-
+    const cohort = cohorts.find(cohort => cohort.cohort_id == req.params.id)
+    
     cohort.cohort_name = req.body.cohort_name
     cohort.start_date = req.body.start_date
     cohort.end_date = req.body.end_date
@@ -40,7 +39,7 @@ const updateCohort = (req, res) => {
 }
 
 const deleteCohort = (req, res) => {
-    const deletedCohort = cohorts.find(cohort.cohort_id == req.params.id)
+    const deletedCohort = cohorts.find(cohort => cohort.cohort_id == req.params.id)
     const updatedCohortsArray = cohorts.filter(cohort => cohort.cohort_id !== deletedCohort.cohort_id)
     res.json({ message: `cohort with id ${req.params.id} deleted`, updatedCohortList: updatedCohortsArray })
 }
